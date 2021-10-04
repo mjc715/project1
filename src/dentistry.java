@@ -37,6 +37,7 @@ public class dentistry {
 
 
         }
+        System.out.print(uppers + lowers);
     }
 //----------------------------------------------------------------------------------------------------------------------
     private static String getUppers(int i, String [] namesArray) {
@@ -44,35 +45,29 @@ public class dentistry {
         String uppers;
         int teethCount;
         int j;
-        boolean validTeeth = false;
 
         System.out.printf("%-50s :", "Please enter uppers for " + namesArray[i]);
         uppers = keyboard.next();
         uppers = uppers.toUpperCase();
         teethCount = uppers.length();
 
-        while (teethCount > 10) {
-            System.out.printf("%-50s :", "Too many teeth, try again ");
-            uppers = keyboard.next();
-            teethCount = uppers.length();
-            uppers = uppers.toUpperCase();
-        }
         for (j = 0; j < uppers.length(); j++) {
+            while (teethCount < 10 && uppers.charAt(j) != 'M' && uppers.charAt(j) != 'C' && uppers.charAt(j) != 'B') {
+                if (uppers.charAt(j) != 'M' && uppers.charAt(j) != 'C' && uppers.charAt(j) != 'B') {
+                    System.out.printf("%-50s :", "Invalid characters, try again ");
+                    uppers = keyboard.next();
+                    uppers = uppers.toUpperCase();
+                    teethCount = uppers.length();
+                    j = 0;
+                }
 
-            if (uppers.charAt(j) != 'M' && uppers.charAt(j) != 'C' && uppers.charAt(j) != 'B') {
-                System.out.printf("%-50s :", "Invalid characters, try again ");
-                uppers = keyboard.next();
-                uppers = uppers.toUpperCase();
-                teethCount = uppers.length();
-                j = 0;
-            }
 
-
-            while (teethCount > 10) {
-                System.out.printf("%-50s :", "Too many teeth, try again ");
-                uppers = keyboard.next();
-                uppers = uppers.toUpperCase();
-                teethCount = uppers.length();
+                if (teethCount > 10) {
+                    System.out.printf("%-50s :", "Too many teeth, try again ");
+                    uppers = keyboard.next();
+                    uppers = uppers.toUpperCase();
+                    teethCount = uppers.length();
+                }
             }
         }
         j = 0;
@@ -84,35 +79,29 @@ public class dentistry {
         String lowers;
         int teethCount;
         int j;
-        boolean validTeeth = false;
 
-        System.out.printf("%-50s :", "Please enter uppers for " + namesArray[i]);
+        System.out.printf("%-50s :", "Please enter lowers for " + namesArray[i]);
         lowers = keyboard.next();
         lowers = lowers.toUpperCase();
         teethCount = lowers.length();
 
-        while (teethCount > 10) {
-            System.out.printf("%-50s :", "Too many teeth, try again ");
-            lowers = keyboard.next();
-            teethCount = lowers.length();
-            lowers = lowers.toUpperCase();
-        }
         for (j = 0; j < lowers.length(); j++) {
+            while (teethCount < 10 && lowers.charAt(j) != 'M' && lowers.charAt(j) != 'C' && lowers.charAt(j) != 'B') {
+                if (lowers.charAt(j) != 'M' && lowers.charAt(j) != 'C' && lowers.charAt(j) != 'B') {
+                    System.out.printf("%-50s :", "Invalid characters, try again ");
+                    lowers = keyboard.next();
+                    lowers = lowers.toUpperCase();
+                    teethCount = lowers.length();
+                    j = 0;
+                }
 
-            if (lowers.charAt(j) != 'M' && lowers.charAt(j) != 'C' && lowers.charAt(j) != 'B') {
-                System.out.printf("%-50s :", "Invalid characters, try again ");
-                lowers = keyboard.next();
-                lowers = lowers.toUpperCase();
-                teethCount = lowers.length();
-                j = 0;
-            }
 
-
-            while (teethCount > 10) {
-                System.out.printf("%-50s :", "Too many teeth, try again ");
-                lowers = keyboard.next();
-                lowers = lowers.toUpperCase();
-                teethCount = lowers.length();
+                if (teethCount > 10) {
+                    System.out.printf("%-50s :", "Too many teeth, try again ");
+                    lowers = keyboard.next();
+                    lowers = lowers.toUpperCase();
+                    teethCount = lowers.length();
+                }
             }
         }
         j = 0;
