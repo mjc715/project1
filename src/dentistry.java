@@ -7,12 +7,13 @@ public class dentistry {
     public static void main(String[] args) {
 
         String uppers = "";
+        String lowers = "";
         int familyMembers, i, j;
         int letterCount = 0;
         char[][][] teethArray;
         String[] namesArray;
-        index = 0;
-        findex = 0;
+
+
 
         System.out.println("Welcome to the Floridian Tooth Records");
         System.out.println("======================================");
@@ -28,9 +29,10 @@ public class dentistry {
 
 
         for (i = 0; i < familyMembers; i++) {
-            System.out.printf("%-50s :", "Please enter family member name");
+            System.out.printf("%-50s :", "Please enter family member " + (i + 1) + " name");
             namesArray[i] = keyboard.next();
             uppers = getUppers(i, namesArray);
+            lowers = getLowers(i, namesArray);
 
 
 
@@ -41,21 +43,82 @@ public class dentistry {
 
         String uppers;
         int teethCount;
-        char forbiddenChars = {'A','D','E','F','G','H','I','J','K','L','N','O','P','Q','R','S','T','U','V','W','X','Y',
-        'Z'};
+        int j;
+        boolean validTeeth = false;
 
         System.out.printf("%-50s :", "Please enter uppers for " + namesArray[i]);
         uppers = keyboard.next();
+        uppers = uppers.toUpperCase();
         teethCount = uppers.length();
 
         while (teethCount > 10) {
-            System.out.printf("%-50s \n", "Too many teeth, try again: ");
+            System.out.printf("%-50s :", "Too many teeth, try again ");
             uppers = keyboard.next();
             teethCount = uppers.length();
+            uppers = uppers.toUpperCase();
         }
-        while (uppers.contains('a'));
+        for (j = 0; j < uppers.length(); j++) {
 
+            if (uppers.charAt(j) != 'M' && uppers.charAt(j) != 'C' && uppers.charAt(j) != 'B') {
+                System.out.printf("%-50s :", "Invalid characters, try again ");
+                uppers = keyboard.next();
+                uppers = uppers.toUpperCase();
+                teethCount = uppers.length();
+                j = 0;
+            }
+
+
+            while (teethCount > 10) {
+                System.out.printf("%-50s :", "Too many teeth, try again ");
+                uppers = keyboard.next();
+                uppers = uppers.toUpperCase();
+                teethCount = uppers.length();
+            }
+        }
+        j = 0;
+        return(uppers);
     }
+//----------------------------------------------------------------------------------------------------------------------
+    private static String getLowers(int i, String [] namesArray) {
+
+        String lowers;
+        int teethCount;
+        int j;
+        boolean validTeeth = false;
+
+        System.out.printf("%-50s :", "Please enter uppers for " + namesArray[i]);
+        lowers = keyboard.next();
+        lowers = lowers.toUpperCase();
+        teethCount = lowers.length();
+
+        while (teethCount > 10) {
+            System.out.printf("%-50s :", "Too many teeth, try again ");
+            lowers = keyboard.next();
+            teethCount = lowers.length();
+            lowers = lowers.toUpperCase();
+        }
+        for (j = 0; j < lowers.length(); j++) {
+
+            if (lowers.charAt(j) != 'M' && lowers.charAt(j) != 'C' && lowers.charAt(j) != 'B') {
+                System.out.printf("%-50s :", "Invalid characters, try again ");
+                lowers = keyboard.next();
+                lowers = lowers.toUpperCase();
+                teethCount = lowers.length();
+                j = 0;
+            }
+
+
+            while (teethCount > 10) {
+                System.out.printf("%-50s :", "Too many teeth, try again ");
+                lowers = keyboard.next();
+                lowers = lowers.toUpperCase();
+                teethCount = lowers.length();
+            }
+        }
+        j = 0;
+        return(lowers);
+    }
+//----------------------------------------------------------------------------------------------------------------------
 }
 
 
