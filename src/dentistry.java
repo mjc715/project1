@@ -13,11 +13,10 @@ public class dentistry {
         char[][][] teethArray;
         String[] namesArray;
 
-
-
         System.out.println("Welcome to the Floridian Tooth Records");
-        System.out.println("======================================");
+        System.out.println("====================================================");
         System.out.printf("%-50s :", "Please enter the number of people in the family");
+
         familyMembers = keyboard.nextInt();
 
         while (familyMembers < 0 || familyMembers > 6) {
