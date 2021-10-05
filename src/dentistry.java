@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class dentistry {
     //------------------------------------------------------------------------------------------------------------------
     private static final Scanner keyboard = new Scanner(System.in);
+    private static final int ROWS_OF_TEETH = 2;
+    private static final int MAX_TEETH = 10;
 
     public static void main(String[] args) {
 
@@ -24,7 +26,7 @@ public class dentistry {
             familyMembers = keyboard.nextInt();
         }
         namesArray = new String[familyMembers];
-        teethArray = new char[familyMembers][2][10];
+        teethArray = new char[familyMembers][ROWS_OF_TEETH][MAX_TEETH];
 
 
         for (i = 0; i < familyMembers; i++) {
@@ -32,11 +34,16 @@ public class dentistry {
             namesArray[i] = keyboard.next();
             uppers = getUppers(i, namesArray);
             lowers = getLowers(i, namesArray);
-
-
-
+            for (j = 0; j < uppers.length(); j++) {
+                teethArray[i][0][j] = uppers.charAt(j);
+            }
+            for (j = 0; j < lowers.length(); j++) {
+                teethArray[i][1][j] = lowers.charAt(j);
+            }
         }
         System.out.print(uppers + lowers);
+
+
     }
 //----------------------------------------------------------------------------------------------------------------------
     private static String getUppers(int i, String [] namesArray) {
