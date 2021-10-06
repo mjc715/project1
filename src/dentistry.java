@@ -13,9 +13,12 @@ public class dentistry {
         int familyMembers, i, j;
         int letterCount = 0;
         char[][][] teethArray;
+        char optionChar;
+        String optionString;
         String[] namesArray;
+        boolean proceed = false;
 
-        System.out.println("Welcome to the Floridian Tooth Records");
+        System.out.println("Welcome to Castellucci Tooth Records");
         System.out.println("====================================================");
         System.out.printf("%-50s :", "Please enter the number of people in the family");
 
@@ -40,8 +43,42 @@ public class dentistry {
             for (j = 0; j < lowers.length(); j++) {
                 teethArray[i][1][j] = lowers.charAt(j);
             }
+
         }
-        System.out.print(uppers + lowers);
+        while (!proceed) {
+            System.out.printf("%-50s :","(P)rint, (E)xtract, (R)oot, or e(X)it");
+            optionString = keyboard.next();
+            optionString = optionString.toUpperCase();
+            optionChar = optionString.charAt(0);
+
+
+            switch (optionChar) {
+                case 'P':
+                    printTeeth(teethArray, namesArray);
+                    break;
+                case 'E':
+                    extractTeeth();
+                    break;
+                case 'R':
+                    rootTeeth();
+                    break;
+                case 'X':
+                    proceed = true;
+                    System.out.println("Thank you for choosing Castellucci Dentistry");
+                    break;
+                default:
+                    System.out.printf("%-50s :","Invalid character, try again");
+                    optionString = keyboard.next();
+                    optionString.toUpperCase();
+                    optionChar = optionString.charAt(0);
+                    break;
+
+            }
+        }
+
+
+
+
 
 
     }
@@ -112,6 +149,42 @@ public class dentistry {
         }
         j = 0;
         return(lowers);
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    private static void printTeeth(char [][][] teethArray,String [] namesArray) {
+
+        int i,j;
+
+        for (i = 0; i < namesArray.length; i++) {
+
+            System.out.println(namesArray[i]);
+            System.out.printf("%10s :","Uppers");
+
+            for (j = 0; j < teethArray[i][0].length; j++) {
+
+                if (teethArray[i][0][j] != '\0') {
+                    System.out.print("  " + (j + 1) + ":" + teethArray[i][0][j]);
+                }
+            }
+            System.out.println();
+            System.out.printf("%10s :","Lowers");
+
+            for (j = 0; j < teethArray[i][1][j]; j++) {
+                System.out.print("  " + (j + 1) + ":" + teethArray[i][1][j]);
+            }
+            System.out.println();
+        }
+
+        }
+//----------------------------------------------------------------------------------------------------------------------
+    private static char extractTeeth() {
+
+        return('a');
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    private static int rootTeeth() {
+        int root1 = 0;
+        return(root1);
     }
 //----------------------------------------------------------------------------------------------------------------------
 }
