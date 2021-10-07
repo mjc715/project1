@@ -14,7 +14,7 @@ public class dentistry {
         int letterCount = 0;
         char[][][] teethArray;
         char optionChar;
-        String optionString;
+        String optionString, familyString;
         String[] namesArray;
         boolean proceed = false;
 
@@ -27,7 +27,9 @@ public class dentistry {
         while (familyMembers < 0 || familyMembers > 6) {
             System.out.printf("%-50s :", "Invalid number, please try again");
             familyMembers = keyboard.nextInt();
+            System.out.print(familyMembers);
         }
+
         namesArray = new String[familyMembers];
         teethArray = new char[familyMembers][ROWS_OF_TEETH][MAX_TEETH];
 
@@ -57,7 +59,7 @@ public class dentistry {
                     printTeeth(teethArray, namesArray);
                     break;
                 case 'E':
-                    extractTeeth();
+                    extractTeeth(teethArray, namesArray);
                     break;
                 case 'R':
                     rootTeeth();
@@ -69,7 +71,7 @@ public class dentistry {
                 default:
                     System.out.printf("%-50s :","Invalid character, try again");
                     optionString = keyboard.next();
-                    optionString.toUpperCase();
+                    optionString = optionString.toUpperCase();
                     optionChar = optionString.charAt(0);
                     break;
 
@@ -177,7 +179,19 @@ public class dentistry {
 
         }
 //----------------------------------------------------------------------------------------------------------------------
-    private static char extractTeeth() {
+    private static char extractTeeth(char [][][] teethArray, String [] namesArray) {
+
+        String member;
+        int i;
+
+        for (i = 0; i < namesArray.length; i++) {
+            namesArray[i] = namesArray[i].toUpperCase();
+        }
+
+        System.out.printf("%-50s :","Which family member?");
+        member = keyboard.next();
+        member = member.toUpperCase();
+
 
         return('a');
     }
