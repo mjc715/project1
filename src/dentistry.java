@@ -1,7 +1,9 @@
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 //======================================================================================================================
 public class dentistry {
-    //------------------------------------------------------------------------------------------------------------------
+    //-Uppercase name^--------------------------------------------------------------------------------------------------
     private static final Scanner keyboard = new Scanner(System.in);
     private static final int ROWS_OF_TEETH = 2;
     private static final int MAX_TEETH = 10;
@@ -59,7 +61,7 @@ public class dentistry {
                     printTeeth(teethArray, namesArray);
                     break;
                 case 'E':
-                    extractTeeth(teethArray, namesArray);
+                    teethArray = extractTeeth(teethArray, namesArray);
                     break;
                 case 'R':
                     rootTeeth();
@@ -179,21 +181,72 @@ public class dentistry {
 
         }
 //----------------------------------------------------------------------------------------------------------------------
-    private static char extractTeeth(char [][][] teethArray, String [] namesArray) {
+    private static char[][][] extractTeeth(char [][][] teethArray, String [] namesArray) {
 
-        String member;
-        int i;
+        String member, rowInput;
+        int toothNumber;
+        char rowChar;
+        int i,j;
+        boolean done = false;
+        String [] namesArrayCopy = namesArray.clone();
 
-        for (i = 0; i < namesArray.length; i++) {
-            namesArray[i] = namesArray[i].toUpperCase();
+        for (i = 0; i < namesArrayCopy.length; i++) {
+            namesArrayCopy[i] = namesArrayCopy[i].toUpperCase();
         }
 
         System.out.printf("%-50s :","Which family member?");
         member = keyboard.next();
         member = member.toUpperCase();
 
+        while (!Arrays.asList(namesArrayCopy).contains(member)) {
 
-        return('a');
+            System.out.printf("%-50s :","Invalid family member, try again.");
+            member = keyboard.next();
+            member = member.toUpperCase();
+
+        }
+
+        for (i = 0; i < namesArray.length; i++) {
+            if (Objects.equals(namesArrayCopy[i], member)) {
+
+                System.out.printf("%-50s :","(U)pper or (L)ower row?");
+                rowInput = keyboard.next();
+                rowInput = rowInput.toUpperCase();
+                rowChar = rowInput.charAt(0);
+
+                switch (rowChar) {
+                    case 'U':
+
+                        System.out.printf("%-50s :","Which tooth number?");
+                        toothNumber = keyboard.nextInt();
+
+                        while (toothNumber > 10 || teethArray[i][0][(toothNumber - 1)] == '\0'
+                        || teethArray[i][0][(toothNumber - 1)] == 'M') {
+
+                            System.out.printf("%-50s :","Invalid tooth, try again");
+                            toothNumber = keyboard.nextInt();
+
+                        }
+                        teethArray[i][0][(toothNumber - 1)] = 'M';
+                        break;
+                    case 'L':
+
+                        System.out.printf("%-50s :","Which tooth number?");
+                        toothNumber = keyboard.nextInt();
+
+                        while (toothNumber > 10 || teethArray[i][1][(toothNumber - 1)] == '\0'
+                        || teethArray[i][1][(toothNumber - 1)] == 'M') {
+
+                            System.out.printf("%-50s :","Invalid tooth, try again");
+                            toothNumber = keyboard.nextInt();
+
+                        }
+                        teethArray[i][1][(toothNumber - 1)] = 'M';
+                        break;
+                }
+            }
+        }
+        return(teethArray);
     }
 //----------------------------------------------------------------------------------------------------------------------
     private static int rootTeeth() {
