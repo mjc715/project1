@@ -80,9 +80,7 @@ public class dentistry {
                     System.out.println("Thank you for choosing Castellucci Dentistry!");
                     break;
                 default:
-                    System.out.printf("%-50s :", "Invalid character, try again");
-                    optionString = keyboard.next();
-                    optionString = optionString.toUpperCase();
+                    System.out.printf("%-50s\n", "Invalid character, try again.");
                     break;
 
             }
@@ -104,23 +102,38 @@ public class dentistry {
         teethCount = uppers.length();
 
         for (j = 0; j < uppers.length(); j++) {
-            while (teethCount > 10 || uppers.charAt(j) != 'M' || uppers.charAt(j) != 'C' || uppers.charAt(j) != 'B') {
-                if (uppers.charAt(j) != 'M' && uppers.charAt(j) != 'C' && uppers.charAt(j) != 'B') {
+            while (teethCount > 10) {
+                System.out.printf("%-50s :", "Too many teeth, try again ");
+                uppers = keyboard.next();
+                uppers = uppers.toUpperCase();
+                teethCount = uppers.length();
+
+                switch (uppers.charAt(j)) {
+                    case 'M':
+                    case 'B':
+                    case 'C':
+                        break;
+                    default:
+                        System.out.printf("%-50s :", "Invalid characters, try again ");
+                        uppers = keyboard.next();
+                        uppers = uppers.toUpperCase();
+                        teethCount = uppers.length();
+                        j = 0;
+                        break;
+                }
+            }
+            switch (uppers.charAt(j)) {
+                case 'M':
+                case 'B':
+                case 'C':
+                    break;
+                default:
                     System.out.printf("%-50s :", "Invalid characters, try again ");
                     uppers = keyboard.next();
                     uppers = uppers.toUpperCase();
                     teethCount = uppers.length();
                     j = 0;
-                }
-
-
-                if (teethCount > 10) {
-                    System.out.printf("%-50s :", "Too many teeth, try again ");
-                    uppers = keyboard.next();
-                    uppers = uppers.toUpperCase();
-                    teethCount = uppers.length();
-                    j = 0;
-                }
+                    break;
             }
         }
         //---- Returns upper set of teeth
@@ -128,37 +141,52 @@ public class dentistry {
     }
     //----------------------------------------------------------------------------------------------------------------------
     private static String getLowers(int i, String[] namesArray) {
-
         String lowers;
         int teethCount;
         int j;
 
-        //---- Gets lower teeth row and converts to chars. Includes error messages
+        //---- Gets upper teeth row and converts to chars. Includes error messages
         System.out.printf("%-50s :", "Please enter lowers for " + namesArray[i]);
         lowers = keyboard.next();
         lowers = lowers.toUpperCase();
         teethCount = lowers.length();
 
         for (j = 0; j < lowers.length(); j++) {
-            while (teethCount > 10 || lowers.charAt(j) != 'M' || lowers.charAt(j) != 'C' || lowers.charAt(j) != 'B') {
-                if (lowers.charAt(j) != 'M' && lowers.charAt(j) != 'C' && lowers.charAt(j) != 'B') {
+            while (teethCount > 10) {
+                System.out.printf("%-50s :", "Too many teeth, try again ");
+                lowers = keyboard.next();
+                lowers = lowers.toUpperCase();
+                teethCount = lowers.length();
+
+                switch (lowers.charAt(j)) {
+                    case 'M':
+                    case 'B':
+                    case 'C':
+                        break;
+                    default:
+                        System.out.printf("%-50s :", "Invalid characters, try again ");
+                        lowers = keyboard.next();
+                        lowers = lowers.toUpperCase();
+                        teethCount = lowers.length();
+                        j = 0;
+                        break;
+                }
+            }
+            switch (lowers.charAt(j)) {
+                case 'M':
+                case 'B':
+                case 'C':
+                    break;
+                default:
                     System.out.printf("%-50s :", "Invalid characters, try again ");
                     lowers = keyboard.next();
                     lowers = lowers.toUpperCase();
                     teethCount = lowers.length();
                     j = 0;
-                }
-
-
-                if (teethCount > 10) {
-                    System.out.printf("%-50s :", "Too many teeth, try again ");
-                    lowers = keyboard.next();
-                    lowers = lowers.toUpperCase();
-                    teethCount = lowers.length();
-                }
+                    break;
             }
         }
-        //---- Returns lower set of teeth
+        //---- Returns upper set of teeth
         return (lowers);
     }
     //----------------------------------------------------------------------------------------------------------------------
