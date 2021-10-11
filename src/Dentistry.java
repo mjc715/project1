@@ -8,7 +8,7 @@ public class Dentistry {
     private static final Scanner keyboard = new Scanner(System.in);
     private static final int ROWS_OF_TEETH = 2;
     private static final int MAX_TEETH = 10;
-
+//----------------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
 
        //---- Declaring variables for main method
@@ -87,7 +87,7 @@ public class Dentistry {
 
 
     }
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     private static String getUppers(int i, String[] namesArray) {
 
         String uppers;
@@ -138,7 +138,7 @@ public class Dentistry {
         //---- Returns upper set of teeth
         return (uppers);
     }
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     private static String getLowers(int i, String[] namesArray) {
         String lowers;
         int teethCount;
@@ -188,7 +188,7 @@ public class Dentistry {
         //---- Returns upper set of teeth
         return (lowers);
     }
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     private static void printTeeth(char[][][] teethArray, String[] namesArray) {
 
         int i, j;
@@ -213,7 +213,7 @@ public class Dentistry {
         }
 
     }
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
     private static char[][][] extractTeeth(char[][][] teethArray, String[] namesArray) {
 
         String member, rowInput;
