@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 //======================================================================================================================
-public class dentistry {
+public class Dentistry {
 
     //----Declaring final variables
     private static final Scanner keyboard = new Scanner(System.in);
@@ -12,13 +12,12 @@ public class dentistry {
     public static void main(String[] args) {
 
        //---- Declaring variables for main method
-        String uppers = "";
-        String lowers = "";
+        String uppers;
+        String lowers;
         int familyMembers, i, j;
-        int letterCount = 0;
         char[][][] teethArray;
         char optionChar;
-        String optionString, familyString;
+        String optionString;
         String[] namesArray;
         boolean proceed = false;
 
@@ -349,7 +348,6 @@ public class dentistry {
         //---- Prints roots
         System.out.printf("%-50s :%.2f\n", "One root canal at", root1);
         System.out.printf("%-50s :%.2f\n", "Another root canal at", root2);
-
     }
 //----------------------------------------------------------------------------------------------------------------------
 }
