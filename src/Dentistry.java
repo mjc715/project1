@@ -31,7 +31,6 @@ public class Dentistry {
         while (familyMembers < 0 || familyMembers > 6) {
             System.out.printf("%-50s :", "Invalid number, please try again");
             familyMembers = keyboard.nextInt();
-            System.out.print(familyMembers);
         }
 
         //---- Creating new strings for names and teeth based on number of family members
@@ -220,6 +219,7 @@ public class Dentistry {
         int toothNumber;
         char rowChar;
         int i;
+        boolean proceed = false;
 
         //---- Copying namesArray for use in this method so the original names don't get changed
         String[] namesArrayCopy = namesArray.clone();
@@ -251,40 +251,50 @@ public class Dentistry {
                 rowInput = rowInput.toUpperCase();
                 rowChar = rowInput.charAt(0);
 
-                switch (rowChar) {
-                    case 'U':
+                while (!proceed) {
 
-                        System.out.printf("%-50s :", "Which tooth number?");
-                        toothNumber = keyboard.nextInt();
-
-                        while (toothNumber > 10 || teethArray[i][0][(toothNumber - 1)] == '\0'
-                                || teethArray[i][0][(toothNumber - 1)] == 'M') {
-
-                            System.out.printf("%-50s :", "Invalid tooth, try again");
+                    switch (rowChar) {
+                        case 'U':
+                            System.out.printf("%-50s :", "Which tooth number?");
                             toothNumber = keyboard.nextInt();
 
-                        }
-                        teethArray[i][0][(toothNumber - 1)] = 'M';
-                        break;
-                    case 'L':
+                            while (toothNumber > 10 || teethArray[i][0][(toothNumber - 1)] == '\0'
+                                    || teethArray[i][0][(toothNumber - 1)] == 'M') {
 
-                        System.out.printf("%-50s :", "Which tooth number?");
-                        toothNumber = keyboard.nextInt();
+                                System.out.printf("%-50s :", "Invalid tooth, try again");
+                                toothNumber = keyboard.nextInt();
 
-                        while (toothNumber > 10 || teethArray[i][1][(toothNumber - 1)] == '\0'
-                                || teethArray[i][1][(toothNumber - 1)] == 'M') {
+                            }
+                            teethArray[i][0][(toothNumber - 1)] = 'M';
+                            proceed = true;
+                            break;
+                        case 'L':
 
-                            System.out.printf("%-50s :", "Invalid tooth, try again");
+                            System.out.printf("%-50s :", "Which tooth number?");
                             toothNumber = keyboard.nextInt();
 
-                        }
-                        teethArray[i][1][(toothNumber - 1)] = 'M';
-                        break;
+                            while (toothNumber > 10 || teethArray[i][1][(toothNumber - 1)] == '\0'
+                                    || teethArray[i][1][(toothNumber - 1)] == 'M') {
+
+                                System.out.printf("%-50s :", "Invalid tooth, try again");
+                                toothNumber = keyboard.nextInt();
+
+                            }
+                            teethArray[i][1][(toothNumber - 1)] = 'M';
+                            proceed = true;
+                            break;
+                        default:
+                            System.out.printf("%-50s :", "Invalid character, try again");
+                            rowInput = keyboard.next();
+                            rowInput = rowInput.toUpperCase();
+                            rowChar = rowInput.charAt(0);
+                            break;
+                    }
                 }
             }
         }
         //---- Returns edited teethArray
-        return(teethArray);
+        return (teethArray);
     }
 //----------------------------------------------------------------------------------------------------------------------
     private static void rootTeeth(char [][][] teethArray, int familyMembers) {
