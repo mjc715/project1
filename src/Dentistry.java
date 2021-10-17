@@ -191,6 +191,7 @@ public class Dentistry {
 
         int i, j;
 
+        //---- Prints the teeth for each family member in a formatted way, only includes existing teeth
         for (i = 0; i < namesArray.length; i++) {
             System.out.println(namesArray[i]);
             System.out.printf("%10s :", "Uppers");
@@ -321,7 +322,7 @@ public class Dentistry {
                     case '\0':
                         break;
                     default:
-                        System.out.println("you have more work to do");
+                        System.out.println("Error in rootTeeth, 1st switch");
                         break;
                 }
 
@@ -340,7 +341,7 @@ public class Dentistry {
                     case '\0':
                         break;
                     default:
-                        System.out.println("you have more work to do");
+                        System.out.println("Error in rootTeeth, 2nd switch");
                         break;
                 }
             }
